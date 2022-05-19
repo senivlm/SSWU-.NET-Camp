@@ -14,6 +14,10 @@ namespace HW2
             matrix = new int[7, 7];
             MatrixFiller.FillMatrix(ref matrix, "d");
             PrintMatrix(matrix, "Diagonal snake fill:");
+            
+            matrix = new int[5, 7];
+            MatrixFiller.FillMatrix(ref matrix, "s");
+            PrintMatrix(matrix, "Spiral snake fill:");
         }
 
         private static void PrintMatrix(int[,] matr, string title = null)

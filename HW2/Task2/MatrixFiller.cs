@@ -37,7 +37,17 @@ namespace HW2.Task2
                 }
             }
         }
-        
+
+
+        private static bool CheckCollision(ref int comparedIndex, int boundary, ref int anotherIndex, ref int cDelta,
+            ref int aDelta)
+        {
+            if (comparedIndex + cDelta != boundary) return false;
+            anotherIndex++;
+            cDelta *= -1;
+            aDelta *= -1;
+            return true;
+        }
         private static void DiagonalSnakeFill(ref int[,] matrix)
         {
             int counter = 1;
@@ -47,43 +57,32 @@ namespace HW2.Task2
             while (counter <= Math.Pow(matrix.GetLength(0), 2))
             {
                 matrix[i, j] = counter++;
-                if (i + deltaI == matrixSize)
+                if (!(CheckCollision(ref i, matrixSize, ref j, ref deltaI, ref deltaJ) ||
+                      CheckCollision(ref j, matrixSize, ref i, ref deltaJ, ref deltaI) ||
+                      CheckCollision(ref i, -1, ref j, ref deltaI, ref deltaJ) ||
+                      CheckCollision(ref j, -1, ref i, ref deltaJ, ref deltaI)))
                 {
-                    j++;
-                    deltaI *= -1;
-                    deltaJ *= -1;
-                    continue;
+                    i += deltaI;
+                    j += deltaJ;
                 }
-                if (j + deltaJ == matrixSize)
-                {
-                    i++;
-                    deltaI *= -1;
-                    deltaJ *= -1;
-                    continue;
-                }
-                if (i + deltaI < 0 )
-                {
-                    j++;
-                    deltaI *= -1;
-                    deltaJ *= -1;
-                    continue;
-                }
-                if (j + deltaJ < 0 )
-                {
-                    i++;
-                    deltaI *= -1;
-                    deltaJ *= -1;
-                    continue;
-                }
-
-                i += deltaI;
-                j += deltaJ;
             }
         }
         
         private static void SpiralSnakeFill(ref int[,] matrix)
         {
-            
+            int cellCounter = 1;
+            int turnCounter = 0;
+            int[] coordinates = {-1, 0};
+            while (cellCounter <= matrix.Length)
+            {
+                for (int ctr = 0; ctr < matrix.GetLength(turnCounter % 2) - (turnCounter + 1) / 2; ctr++)
+                {
+                    coordinates[turnCounter % 2] += (int) Math.Pow(-1, turnCounter / 2 % 2);
+                    matrix[coordinates[0], coordinates[1]] = cellCounter;
+                    cellCounter++;
+                }
+                turnCounter++;
+            }
         }
     }
 }
