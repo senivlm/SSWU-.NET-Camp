@@ -40,7 +40,45 @@ namespace HW2.Task2
         
         private static void DiagonalSnakeFill(ref int[,] matrix)
         {
-            
+            int counter = 1;
+            int matrixSize = matrix.GetLength(0);
+            int deltaI = -1, deltaJ = 1;
+            int i = 0, j = 0;
+            while (counter <= Math.Pow(matrix.GetLength(0), 2))
+            {
+                matrix[i, j] = counter++;
+                if (i + deltaI == matrixSize)
+                {
+                    j++;
+                    deltaI *= -1;
+                    deltaJ *= -1;
+                    continue;
+                }
+                if (j + deltaJ == matrixSize)
+                {
+                    i++;
+                    deltaI *= -1;
+                    deltaJ *= -1;
+                    continue;
+                }
+                if (i + deltaI < 0 )
+                {
+                    j++;
+                    deltaI *= -1;
+                    deltaJ *= -1;
+                    continue;
+                }
+                if (j + deltaJ < 0 )
+                {
+                    i++;
+                    deltaI *= -1;
+                    deltaJ *= -1;
+                    continue;
+                }
+
+                i += deltaI;
+                j += deltaJ;
+            }
         }
         
         private static void SpiralSnakeFill(ref int[,] matrix)
