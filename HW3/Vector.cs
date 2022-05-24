@@ -37,11 +37,22 @@ namespace Vector
             }
         }
 
-        public Vector(int[] arr)
+        public Vector(int[] sourceArray)
         {
-            this.arr = arr;
+            arr = new int[sourceArray.Length];
+            for (int i = 0; i < sourceArray.Length; i++)
+            {
+                arr[i] = sourceArray[i];
+            }
             Length = arr.Length;
             capacity = arr.Length;
+        }
+        
+        public Vector(int n)
+        {
+            arr = new int[n];
+            Length = n;
+            capacity = n;
         }
 
         private void Resize(int newCapacity)
@@ -61,13 +72,6 @@ namespace Vector
             }
         }
 
-        public Vector(int n)
-        {
-            arr = new int[n];
-            Length = n;
-            capacity = n;
-        }
-        
         public void RandomInitialization(int a, int b)
         {
             Random random = new Random();
@@ -165,6 +169,13 @@ namespace Vector
             Length++;
         }
 
+        public int Pop()
+        {
+            if (Length < 1) throw new Exception("Vector is empty!");
+            Length--;
+            return arr[Length];
+        }
+
         
         public bool IsPalindrome()
         {
@@ -215,7 +226,27 @@ namespace Vector
 
             return maxSequenceIndex;
         }
-        
-        
+
+        public int PopByIndex(int index)
+        {
+            if (index >= 0 && index < Length)
+            {
+                int value = arr[index];
+                for (int i = index; i < Length - 1; i++) arr[i] = arr[i + 1];
+                Length--;
+                return value;
+            }
+            throw new Exception("Index out of range array");
+        }
+
+        public void Shuffle()
+        {
+            Vector initValues = new Vector(arr);
+            Random random = new Random();
+            for (int i = 0; i < Length; i++)
+            {
+                arr[i] = initValues.PopByIndex(random.Next(Length - i));
+            }
+        }
     }
 }
