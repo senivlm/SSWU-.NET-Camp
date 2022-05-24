@@ -11,7 +11,7 @@ namespace HW2
             MatrixFiller.FillMatrix(ref matrix, "v");
             PrintMatrix(matrix, "Vertical snake fill:");
             
-            matrix = new int[7, 7];
+            matrix = new int[7, 9];
             MatrixFiller.FillMatrix(ref matrix, "d");
             PrintMatrix(matrix, "Diagonal snake fill:");
             

@@ -12,8 +12,8 @@ namespace HW2.Task2
                     VerticalSnakeFill(ref matrix);
                     return;
                 case "d":
-                    if (matrix.GetLength(0) == matrix.GetLength(1)) DiagonalSnakeFill(ref matrix);
-                    else Console.WriteLine("Diagonal snake fill mode can't be used with non-square matrix!");
+                    /*if (matrix.GetLength(0) == matrix.GetLength(1)) */DiagonalSnakeFill(ref matrix);/*
+                    else Console.WriteLine("Diagonal snake fill mode can't be used with non-square matrix!");*/
                     return;
                 case "s":
                     SpiralSnakeFill(ref matrix);
@@ -51,14 +51,15 @@ namespace HW2.Task2
         private static void DiagonalSnakeFill(ref int[,] matrix)
         {
             int counter = 1;
-            int matrixSize = matrix.GetLength(0);
+            int columnSize = matrix.GetLength(0);
+            int rowSize = matrix.GetLength(1);
             int deltaI = -1, deltaJ = 1;
             int i = 0, j = 0;
-            while (counter <= Math.Pow(matrix.GetLength(0), 2))
+            while (counter <= matrix.Length)
             {
                 matrix[i, j] = counter++;
-                if (!(CheckCollision(ref i, matrixSize, ref j, ref deltaI, ref deltaJ) ||
-                      CheckCollision(ref j, matrixSize, ref i, ref deltaJ, ref deltaI) ||
+                if (!(CheckCollision(ref i, columnSize, ref j, ref deltaI, ref deltaJ) ||
+                      CheckCollision(ref j, rowSize, ref i, ref deltaJ, ref deltaI) ||
                       CheckCollision(ref i, -1, ref j, ref deltaI, ref deltaJ) ||
                       CheckCollision(ref j, -1, ref i, ref deltaJ, ref deltaI)))
                 {
