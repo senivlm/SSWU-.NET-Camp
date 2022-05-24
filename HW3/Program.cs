@@ -6,7 +6,7 @@ namespace Vector
     {
         static void Main(string[] args)
         {
-            Vector arr = new Vector(20);
+            /*Vector arr = new Vector(20);
             arr.RandomInitialization(1, 5);
 
             try
@@ -32,7 +32,11 @@ namespace Vector
             //arr.RandomInitialization();
             //Console.WriteLine(arr);
 
-
+            Matrix matrix = new Matrix(5, 5);
+            matrix.DiagonalSnakeFill(Matrix.Modes.StartRight);
+            Console.WriteLine(matrix);
+            matrix.DiagonalSnakeFill(Matrix.Modes.StartDown);
+            Console.WriteLine(matrix);
         }
     }
 }

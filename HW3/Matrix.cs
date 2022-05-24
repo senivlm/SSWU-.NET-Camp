@@ -44,7 +44,7 @@ namespace Vector
                 {
                     for (int i = 0; i < 2; i++)
                     {
-                        indexes[i] = deltas[i];
+                        indexes[i] += deltas[i];
                     }
                 }
             }
@@ -76,6 +76,20 @@ namespace Vector
             }
 
             return false;
+        }
+
+        public override string ToString()
+        {
+            string matrixAsString = "";
+            for (int i = 0; i < _matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < _matrix.GetLength(1) - 1; j++)
+                {
+                    matrixAsString += $"{_matrix[i,j], 3:D0},";
+                }
+                matrixAsString += $"{_matrix[i,_matrix.GetLength(1)-1], 3:D0}\n";
+            }
+            return matrixAsString+"\n";
         }
     }
 }
