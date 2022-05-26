@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Vector
+namespace HW3
 {
-    class Pair
+    public class Pair
     {
         private int number;
         private int freq;

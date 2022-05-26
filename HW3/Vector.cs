@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Vector
+namespace HW3
 {
-    class Vector
+    public class Vector
     {
         int[] arr;
         public int Length { get; private set; }
@@ -28,12 +28,11 @@ namespace Vector
                     arr[index] = value;
                     Length = Math.Max(Length, index + 1);
                 }
-
-                if (index < 0 && index >= -Length)
+                else if (index < 0 && index >= -Length)
                 {
                     arr[Length + index] = value;
                 }
-                throw new Exception("Index out of range array");
+                else throw new Exception("Index out of range array");
             }
         }
 

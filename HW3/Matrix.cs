@@ -1,10 +1,10 @@
 using System;
 
-namespace Vector
+namespace HW3
 {
     public class Matrix
     {
-        private int[,] _matrix;
+        private readonly int[,] _matrix;
 
         public Matrix(int[,] source)
         {

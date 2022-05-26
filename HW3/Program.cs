@@ -1,37 +1,33 @@
 ﻿using System;
 
-namespace Vector
+namespace HW3
 {
-    class Program
+    static class Program
     {
-        static void Main(string[] args)
+        internal static void Main()
         {
-            /*Vector arr = new Vector(20);
-            arr.RandomInitialization(1, 5);
-
-            try
-            {
-                arr[0] = 999;
-                Console.WriteLine(arr[21]);
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            Vector v = new Vector(10);
+            v.RandomInitialization(1, 25);
+            Console.WriteLine(v);
+            QuickSort.Sort(v, 0, v.Length);
+            Console.WriteLine(v);
+            v.Shuffle();
+            Console.WriteLine(v);
+            v.Shuffle();
+            Console.WriteLine(v);
+            v.Shuffle();
+            Console.WriteLine(v);
+            v.Shuffle();
+            Console.WriteLine(v);
+            v.Reverse();
+            Console.WriteLine(v);
+            for(int i = 0; i < 12625; i++) v.Push(i);
+            for(int i = 0; i < 12624; i++) v.Pop();
+            Console.WriteLine(v);
+            v.PopByIndex(0);
+            Console.WriteLine(v);
+            Console.WriteLine();
             
-
-/*            Pair[] pairs = arr.CalculateFreq();
-
-            for (int i = 0; i < pairs.Length; i++)
-            {
-                Console.Write(pairs[i] + "\n"); 
-            }
-            Console.WriteLine();*/
-
-            //Console.WriteLine(pairs);
-            //arr.RandomInitialization();
-            //Console.WriteLine(arr);
-
             Matrix matrix = new Matrix(5, 5);
             matrix.DiagonalSnakeFill(Matrix.Modes.StartRight);
             Console.WriteLine(matrix);
