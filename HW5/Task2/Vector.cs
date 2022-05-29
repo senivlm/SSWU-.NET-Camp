@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HW3
+namespace HW5
 {
     public class Vector
     {
@@ -117,10 +117,18 @@ namespace HW3
             return str;
         }
 
-        public void Push(int value)
+        public void PushBack(int value)
         {
             if (Length==capacity) Resize(capacity+5);
             arr[Length] = value;
+            Length++;
+        }
+        
+        public void PushFront(int value)
+        {
+            if (Length==capacity) Resize(capacity+5);
+            for (int i = Length; i > 0; i--) arr[i] = arr[i - 1];
+            arr[0] = value;
             Length++;
         }
 
@@ -204,7 +212,43 @@ namespace HW3
             }
         }
         #endregion
+
+        public Vector Sort()
+        {
+            int[] numbers = new int[arr.Length];
+            for (int i = 0; i < arr.Length; i++) numbers[i] = arr[i];
+            for (int index = Length / 2; index >= 0; index--) Heapify(ref numbers, index, Length);
+            for (int i = 0; i < arr.Length; i++)
+            {
+                (numbers[0], numbers[Length - i - 1]) = (numbers[Length - i - 1], numbers[0]);
+                Heapify(ref numbers, 0, Length-i-1);
+            }
+
+            return new Vector(numbers);
+        }
         
-        
+        private void Heapify(ref int[] numbers, int startIndex, int finIndex)
+        {
+            if (finIndex < 2*startIndex+2) return;
+            if (finIndex == 2*startIndex+2)
+            {
+                if (numbers[2 * startIndex + 1] > numbers[startIndex])
+                {
+                    (numbers[2*startIndex+1], numbers[startIndex]) = (numbers[startIndex], numbers[2 * startIndex + 1]);
+                }
+                return;
+            }
+            
+            if (numbers[2*startIndex+1] >= numbers[2*startIndex+2] && numbers[2*startIndex+1] > numbers[startIndex])
+            {
+                (numbers[2*startIndex+1], numbers[startIndex]) = (numbers[startIndex], numbers[2*startIndex+1]);
+                Heapify(ref numbers, 2 * startIndex + 1, finIndex);
+            }
+            else if (numbers[2*startIndex+2] >= numbers[2*startIndex+1] && numbers[2*startIndex+2] > numbers[startIndex])
+            {
+                (numbers[2*startIndex+2], numbers[startIndex]) = (numbers[startIndex], numbers[2*startIndex+2]);
+                Heapify(ref numbers, 2*startIndex+2, finIndex);
+            }
+        }
     }
 }
