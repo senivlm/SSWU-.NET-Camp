@@ -11,12 +11,13 @@ namespace HW3
         }
 
         private static int Divide(Vector vector, int startIndex, int excludedEndIndex)
-        {
+        {// пропоную обговорити нюанси.
             int central = vector[excludedEndIndex-1];
             int firstBiggerIndex = startIndex;
             
             for (int j = startIndex; j < excludedEndIndex-1; j++) {
                 if (vector[j] <= central) {
+                    //Молодець з кортежем!
                     (vector[firstBiggerIndex], vector[j]) = (vector[j], vector[firstBiggerIndex]);
                     firstBiggerIndex++;
                 }
