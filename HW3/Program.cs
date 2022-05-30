@@ -5,7 +5,7 @@ namespace HW3
     static class Program
     {
         internal static void Main()
-        {
+        {// Немає перехоплення винятків!
             Vector v = new Vector(10);
             v.RandomInitialization(1, 25);
             Console.WriteLine(v);
