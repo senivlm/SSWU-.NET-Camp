@@ -28,13 +28,16 @@ namespace HW2.Task2
         {
             int counter = 1;
             int subtractor = matrix.GetLength(0)-1;
+            int iMultiplier = 1;
             for (int j = 0; j < matrix.GetLength(1); j++)
             {
                 for (int i = 0; i < matrix.GetLength(0); i++)
                 {
-                    matrix[(int)(j%2*subtractor+i*Math.Pow(-1, j)), j] = counter;
+                    matrix[(j%2*subtractor+i*iMultiplier), j] = counter;
                     counter++;
                 }
+
+                iMultiplier *= -1;
             }
         }
 
@@ -74,11 +77,14 @@ namespace HW2.Task2
             int cellCounter = 1;
             int turnCounter = 0;
             int[] coordinates = {-1, 0};
+            int boundary, step;
             while (cellCounter <= matrix.Length)
             {
-                for (int ctr = 0; ctr < matrix.GetLength(turnCounter % 2) - (turnCounter + 1) / 2; ctr++)
+                boundary = matrix.GetLength(turnCounter % 2) - (turnCounter + 1) / 2;
+                step = (int) Math.Pow(-1, turnCounter / 2 % 2);
+                for (int ctr = 0; ctr < boundary; ctr++)
                 {
-                    coordinates[turnCounter % 2] += (int) Math.Pow(-1, turnCounter / 2 % 2);
+                    coordinates[turnCounter % 2] += step;
                     matrix[coordinates[0], coordinates[1]] = cellCounter;
                     cellCounter++;
                 }
