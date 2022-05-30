@@ -21,6 +21,7 @@ namespace HW3
             Console.WriteLine(v);
             v.Reverse();
             Console.WriteLine(v);
+            //Не зрозуміла цієї радості з закиданням і вийманням. Чекатиму пояснень.)
             for(int i = 0; i < 12625; i++) v.Push(i);
             for(int i = 0; i < 12624; i++) v.Pop();
             Console.WriteLine(v);
