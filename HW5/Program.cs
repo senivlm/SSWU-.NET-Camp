@@ -1,10 +1,38 @@
 ﻿using System;
+using System.IO;
+using HW5.Task1;
 
 namespace HW5
 {
     class Program
     {
         static void Main(string[] args)
+        {
+            Task1();
+            Console.WriteLine();
+            Task2();
+        }
+
+        public static void Task1()
+        {
+            FileReader fr = new FileReader("source.csv");
+            Console.WriteLine(fr.fileElementsCount);
+            int n = fr.fileElementsCount/2;
+            int[] source = fr.ReadArray(n);
+            int[] res = MergeSort.Sort(source);
+            FileWriter.ArrayToFile(res, "result1.csv");
+            
+            source = fr.ReadArray(fr.fileElementsCount-n);
+            res = MergeSort.Sort(source);
+            FileWriter.ArrayToFile(res, "result2.csv");
+            
+            FileWriter.MergeFiles("result1.csv", "result2.csv", "result.csv");
+            File.Delete("result1.csv");
+            File.Delete("result2.csv");
+            fr.Dispose();
+        }
+
+        public static void Task2()
         {
             Vector v = new Vector(500);
             Random rand = new Random();
