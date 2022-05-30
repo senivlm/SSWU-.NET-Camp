@@ -31,7 +31,7 @@ namespace HW2.Task2
             for (int j = 0; j < matrix.GetLength(1); j++)
             {
                 for (int i = 0; i < matrix.GetLength(0); i++)
-                {
+                {// підносити до степеня -1 не дуже ефективно!
                     matrix[(int)(j%2*subtractor+i*Math.Pow(-1, j)), j] = counter;
                     counter++;
                 }
@@ -48,6 +48,7 @@ namespace HW2.Task2
             aDelta *= -1;
             return true;
         }
+        //Це  більше функціональний стиль. Так можна все програмувати в функціональному дусі через статичні методи. У цьому випадку краще було використати ООП.Можемо продискутувати.
         private static void DiagonalSnakeFill(ref int[,] matrix)
         {
             int counter = 1;
@@ -70,12 +71,12 @@ namespace HW2.Task2
         }
         
         private static void SpiralSnakeFill(ref int[,] matrix)
-        {
+        {//Алгоритмічно цікаво реалізували!
             int cellCounter = 1;
             int turnCounter = 0;
             int[] coordinates = {-1, 0};
             while (cellCounter <= matrix.Length)
-            {
+            {//matrix.GetLength(turnCounter % 2) - (turnCounter + 1) краще раз оформити.
                 for (int ctr = 0; ctr < matrix.GetLength(turnCounter % 2) - (turnCounter + 1) / 2; ctr++)
                 {
                     coordinates[turnCounter % 2] += (int) Math.Pow(-1, turnCounter / 2 % 2);
