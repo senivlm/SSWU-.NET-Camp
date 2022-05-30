@@ -179,7 +179,7 @@ namespace HW3
         public bool IsPalindrome()
         {
             for (int i = 0; i < Length / 2 + 1; i++)
-            {
+            {//поясніть, будь ласка, цю операцію
                 if (arr[i] != arr[^(1 + i)]) return false;
             }
             return true;
