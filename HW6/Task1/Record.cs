@@ -41,7 +41,7 @@ namespace HW6.Task1
                 {
                     double nextReadings = double.Parse(MeterReadings[i].Item1);
                     DateTime nextDate = MeterReadings[i].Item2;
-                    if (nextReadings < readings || nextDate < readingDate)
+                    if (nextReadings < readings || nextDate < readingDate || nextDate.Month-1/4!=Quarter-1)
                     {
                         IsNull = true;
                         break;
