@@ -21,7 +21,8 @@ namespace HW6.Task1
             InitialReadings = data[2];
             for (int i = 4; i < data.Length; i += 2)
             {
-                if (DateTime.TryParseExact(data[i], "dd.MM.yy", null, System.Globalization.DateTimeStyles.None, out DateTime date))
+                if (DateTime.TryParseExact(data[i], "dd.MM.yy", null, System.Globalization.DateTimeStyles.None,
+                        out DateTime date))
                 {
                     MeterReadings[i / 2 - 2] = (data[i - 1], date);
                 }
@@ -29,6 +30,25 @@ namespace HW6.Task1
                 {
                     IsNull = true;
                     break;
+                }
+            }
+
+            if (!IsNull)
+            {
+                double readings = double.Parse(InitialReadings);
+                DateTime readingDate = new DateTime();
+                for (int i = 0; i < MeterReadings.Length; i++)
+                {
+                    double nextReadings = double.Parse(MeterReadings[i].Item1);
+                    DateTime nextDate = MeterReadings[i].Item2;
+                    if (nextReadings < readings || nextDate < readingDate)
+                    {
+                        IsNull = true;
+                        break;
+                    }
+
+                    readings = nextReadings;
+                    readingDate = nextDate;
                 }
             }
         }
