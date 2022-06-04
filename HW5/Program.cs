@@ -16,7 +16,6 @@ namespace HW5
         public static void Task1()
         {
             FileReader fr = new FileReader("source.csv");
-            Console.WriteLine(fr.fileElementsCount);
             int n = fr.fileElementsCount/2;
             int[] source = fr.ReadArray(n);
             int[] res = MergeSort.Sort(source);
