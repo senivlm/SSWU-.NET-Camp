@@ -9,12 +9,13 @@ namespace HW6.Task1
         {
             int quarter = Int32.Parse(fileContent[0].Split(',')[1]);
             Record[] records = new Record[fileContent.Length-1];
-            for (int i = 0; i < fileContent.Length - 1; i++)
+            int i;
+            for (i = 0; i < fileContent.Length - 1; i++)
             {
                 records[i] = new Record(quarter, fileContent[i + 1]);
                 if (records[i].IsNull) i--;
             } 
-            return records;
+            return records[..(i-1)];
         }
     }
 }
