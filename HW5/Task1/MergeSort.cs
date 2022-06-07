@@ -26,7 +26,7 @@ namespace HW5.Task1
                     j++;
                 }
             }
-
+// Тут таки оптимальніше for!
             while (i < part1.Length)
             {
                 result[i + j] = part1[i];
