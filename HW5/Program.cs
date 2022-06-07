@@ -5,7 +5,7 @@ using HW5.Task1;
 namespace HW5
 {
     class Program
-    {
+    {//Ваш номер 3.
         static void Main(string[] args)
         {
             Task1();
@@ -26,6 +26,7 @@ namespace HW5
             FileWriter.ArrayToFile(res, "result2.csv");
             
             FileWriter.MergeFiles("result1.csv", "result2.csv", "result.csv");
+            //Дуже добре, що подбали про знищення файлів
             File.Delete("result1.csv");
             File.Delete("result2.csv");
             fr.Dispose();
