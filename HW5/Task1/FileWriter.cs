@@ -3,7 +3,7 @@ using System.IO;
 namespace HW5.Task1
 {
     public static class FileWriter
-    {
+    {// Прошу продемонструвати код на занятті!!!
         public static void ArrayToFile(int[] source, string dest)
         {
             if (!File.Exists(dest)) using (File.Create(dest)) {}
