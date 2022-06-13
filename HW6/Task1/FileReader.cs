@@ -22,6 +22,7 @@ namespace HW6.Task1
             {
                 line = sr.ReadLine();
                 ctr++;
+                // Покажете, чи вмієте самі створювати регулярні вирази, чи використовуєте готові!
                 if (string.IsNullOrEmpty(line) || !Regex.IsMatch(line, @"^\d+,[A-ZА-ЯІЇҐ][a-zа-яіїґ’]+,\d+(?:\.\d{1,3})?(?:,\d+(?:\.\d{1,3})?,\d{2}\.\d{2}\.\d{2}){1,3}$")) return false;
             }
             sr.Close();
