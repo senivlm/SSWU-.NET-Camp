@@ -5,7 +5,7 @@ using HW6.Task2;
 namespace HW6
 {
     class Program
-    {
+    {// Загалом великий молодець. На наступний тиждень я протестує Вас на наступні теми і, можливо, пришвидшимо перехід на 2 етап.
         static void Main()
         {
             Task1();
@@ -24,7 +24,7 @@ namespace HW6
             int[] nullConsumptionFlats = RecordsAnalyzer.GetNullConsumptionFlats(records);
             if (nullConsumptionFlats.Length==0) Console.WriteLine("There are no flats with null consumption");
             else
-            {
+            {// треба було у файл!
                 Console.Write("Flats with null consumption: ");
                 Console.Write(nullConsumptionFlats[0]);
                 for (int i = 1; i < nullConsumptionFlats.Length; i++) Console.Write(", "+nullConsumptionFlats[i]);
