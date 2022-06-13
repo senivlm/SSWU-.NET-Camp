@@ -10,6 +10,7 @@ namespace HW6.Task1
         public string Owner { get; private set; }
         public int Quarter { get; private set; }
         public string InitialReadings;
+        //Назва поля з маленької літери та має  бути приватне
         public (string, DateTime)[] MeterReadings = new (string, DateTime)[3];
 
         public Record(int quarter, string sourceLine)
