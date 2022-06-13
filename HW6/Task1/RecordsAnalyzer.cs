@@ -1,5 +1,5 @@
 namespace HW6.Task1
-{
+{// Мислите функціонально. Обгрунтуйте доцільність.
     public static class RecordsAnalyzer
     {
         public static string GetPersonWithBiggestDebt(Record[] records)
